@@ -1,29 +1,50 @@
 name: Update Manifest
 
 on:
-  # Triggered by the plugin repo's release workflow via repository-dispatch.
-  repository_dispatch:
-    types: [ plugin-released ]
-  # Also runnable manually from the Actions tab (e.g. to rebuild after a fix).
+  # Run manually from the Actions tab to rebuild the aggregated index.
   workflow_dispatch:
 
 permissions:
-  contents: write   # required to push manifest.json to gh-pages
+  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Regenerate manifest.json
-        uses: Kevinjil/jellyfin-plugin-repo-action@v0.4.3
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          repository: NMe84/jellyfin-watch-state-sync-plugin
-          # Write manifest.json to the gh-pages branch.
-          # Users add the raw URL for that branch to Jellyfin:
-          #   https://raw.githubusercontent.com/NMe84/jellyfin-plugins/gh-pages/manifest.json
-          pagesBranch: gh-pages
-          pagesFile: manifest.json
-          ignorePrereleases: true
+          ref: gh-pages
+
+      # Each plugin hosts its own manifest.json on its gh-pages branch.
+      # This job downloads them all and merges them into a single
+      # manifest.json so users only need to add one repository URL.
+      - name: Merge plugin manifests
+        run: |
+          python3 - <<'EOF'
+          import json, urllib.request
+
+          PLUGINS = [
+            "https://raw.githubusercontent.com/NMe84/jellyfin-watch-state-sync-plugin/gh-pages/manifest.json",
+          ]
+
+          merged = []
+          for url in PLUGINS:
+            try:
+              with urllib.request.urlopen(url) as r:
+                merged.extend(json.loads(r.read()))
+            except Exception as e:
+              print(f"Warning: could not fetch {url}: {e}")
+
+          with open("manifest.json", "w") as f:
+            json.dump(merged, f, indent=2)
+
+          print(f"Wrote {len(merged)} plugin(s) to manifest.json")
+          EOF
+
+      - name: Commit manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest.json
+          git diff --cached --quiet || git commit -m "Update aggregated manifest"
+          git push
