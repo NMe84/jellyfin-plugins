@@ -1,7 +1,10 @@
 name: Update Manifest
 
 on:
-  # Run manually from the Actions tab to rebuild the aggregated index.
+  # Triggered automatically by each plugin's release workflow.
+  repository_dispatch:
+    types: [ plugin-released ]
+  # Also runnable manually from the Actions tab.
   workflow_dispatch:
 
 permissions:
