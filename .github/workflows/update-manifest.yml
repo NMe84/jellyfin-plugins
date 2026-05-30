@@ -7,6 +7,9 @@ on:
   # Also runnable manually from the Actions tab (e.g. to rebuild after a fix).
   workflow_dispatch:
 
+permissions:
+  contents: write   # required to push manifest.json to gh-pages
+
 jobs:
   update:
     runs-on: ubuntu-latest
