@@ -1,0 +1,26 @@
+name: Update Manifest
+
+on:
+  # Triggered by the plugin repo's release workflow via repository-dispatch.
+  repository_dispatch:
+    types: [ plugin-released ]
+  # Also runnable manually from the Actions tab (e.g. to rebuild after a fix).
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerate manifest.json
+        uses: Kevinjil/jellyfin-plugin-repo-action@v0.4.3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          repository: NMe84/jellyfin-watch-state-sync-plugin
+          # Write manifest.json to the gh-pages branch.
+          # Users add the raw URL for that branch to Jellyfin:
+          #   https://raw.githubusercontent.com/NMe84/jellyfin-plugins/gh-pages/manifest.json
+          pagesBranch: gh-pages
+          pagesFile: manifest.json
+          ignorePrereleases: true
