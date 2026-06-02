@@ -1,10 +1,8 @@
 name: Update Manifest
 
 on:
-  # Triggered automatically by each plugin's release workflow.
   repository_dispatch:
     types: [ plugin-released ]
-  # Also runnable manually from the Actions tab.
   workflow_dispatch:
 
 permissions:
@@ -18,9 +16,6 @@ jobs:
         with:
           ref: gh-pages
 
-      # Each plugin hosts its own manifest.json on its gh-pages branch.
-      # This job downloads them all and merges them into a single
-      # manifest.json so users only need to add one repository URL.
       - name: Merge plugin manifests
         run: |
           python3 - <<'EOF'
@@ -28,6 +23,7 @@ jobs:
 
           PLUGINS = [
             "https://raw.githubusercontent.com/NMe84/jellyfin-watch-state-sync-plugin/gh-pages/manifest.json",
+            "https://raw.githubusercontent.com/NMe84/jellyfin-wled-tv-plugin/gh-pages/manifest.json",
           ]
 
           merged = []
