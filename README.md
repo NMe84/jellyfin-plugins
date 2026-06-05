@@ -21,6 +21,7 @@ This repository is a central catalogue for Jellyfin plugins maintained by NMe84.
 | Plugin | Individual manifest | Description |
 |---|---|---|
 | [Watch State Sync](https://github.com/NMe84/jellyfin-watch-state-sync-plugin) | [manifest.json](https://raw.githubusercontent.com/NMe84/jellyfin-watch-state-sync-plugin/gh-pages/manifest.json) | Synchronises watch states between connected user groups for linked TV shows |
+| [WLED TV](https://github.com/NMe84/jellyfin-wled-tv-plugin) | [manifest.json](https://raw.githubusercontent.com/NMe84/jellyfin-wled-tv-plugin/gh-pages/manifest.json) | Drives a WLED LED strip in real time from the colours at the edges of playing video |
 
 ## How it works
 
