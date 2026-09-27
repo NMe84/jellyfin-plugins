@@ -52,6 +52,14 @@
     "owner": "nme84",
     "versions": [
       {
+        "changelog": "## v2.2.0.0 \u2014 one build for every Jellyfin\n\nReplaces the split `2.1.0.10` / `2.1.0.12` releases with a **single build that runs on both Jellyfin 10.11.9+ and Jellyfin 12**.\n\n### Changed\n- **No more per-Jellyfin builds.** Verified by loading one .NET 9 build into real Jellyfin 10.11 and Jellyfin 12 containers \u2014 it loads and the plugin's service starts on both. Jellyfin's assemblies aren't strong-named, so the runtime doesn't enforce the referenced version.\n- Back to a plain version number and a single download; the odd `.10`/`.12` suffixes are gone.\n- Whether you're on Jellyfin 10.11 or 12, this shows up as a normal update and installs itself.\n\nNo functional changes to edge lighting.",
+        "checksum": "ced8e59e11b5c795fca8045daced5c9d",
+        "sourceUrl": "https://github.com/NMe84/jellyfin-wled-tv-plugin/releases/download/v2.2.0.0/Jellyfin.Plugin.WledTv.zip",
+        "targetAbi": "10.11.9.0",
+        "timestamp": "2026-09-27T13:31:26Z",
+        "version": "2.2.0.0"
+      },
+      {
         "changelog": "## v2.1.0 \u2014 Jellyfin 12 support\n\nJellyfin 12 moved the server to **.NET 10**, which stops plugins built for Jellyfin 10.x from loading. This release ships builds for **both** generations.\n\n### Added\n- **Jellyfin 12 support.** One release, two builds \u2014 the catalogue offers the right one for your server automatically:\n\n  | Your Jellyfin | Version you'll see | Build |\n  |---|---|---|\n  | 10.11.9+ | `2.1.0.10` | .NET 9 |\n  | 12 | `2.1.0.12` | .NET 10 |\n\n- The **4th version component is the Jellyfin major version** the build targets. This is deliberate: Jellyfin only offers an update when the catalogue version is *higher* than what's installed, so upgrading your server from 10.x to 12 now shows `2.1.0.12` as a normal plugin update and installs it automatically. Without it you'd silently keep the .NET 9 build and the plugin would fail to load.\n\nNo functional changes to edge lighting; this is a compatibility release.",
         "checksum": "492fe41df693fdee3173c9050262a9b4",
         "sourceUrl": "https://github.com/NMe84/jellyfin-wled-tv-plugin/releases/download/v2.1.0/Jellyfin.Plugin.WledTv-jf12.zip",
