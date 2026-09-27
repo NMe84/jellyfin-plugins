@@ -17,22 +17,6 @@
         "version": "1.3.0.0"
       },
       {
-        "changelog": "## v1.2.0 \u2014 Jellyfin 12 support\n\nJellyfin 12 moved the server to **.NET 10**, which stops plugins built for Jellyfin 10.x from loading. This release ships builds for **both** generations.\n\n### Added\n- **Jellyfin 12 support.** One release, two builds \u2014 the catalogue offers the right one for your server automatically:\n\n  | Your Jellyfin | Version you'll see | Build |\n  |---|---|---|\n  | 10.11.9+ | `1.2.0.10` | .NET 9 |\n  | 12 | `1.2.0.12` | .NET 10 |\n\n- The **4th version component is the Jellyfin major version** the build targets. This is deliberate: Jellyfin only offers an update when the catalogue version is *higher* than what's installed, so upgrading your server from 10.x to 12 now shows `1.2.0.12` as a normal plugin update and installs it automatically. Without it you'd silently keep the .NET 9 build and the plugin would fail to load.\n\nNo functional changes to watch-state syncing; this is a compatibility release.",
-        "checksum": "814a62d8cb9ef5cd9419d76d5b474669",
-        "sourceUrl": "https://github.com/NMe84/jellyfin-watch-state-sync-plugin/releases/download/v1.2.0/Jellyfin.Plugin.WatchSync-jf12.zip",
-        "targetAbi": "12.0.0.0",
-        "timestamp": "2026-09-10T22:17:08Z",
-        "version": "1.2.0.12"
-      },
-      {
-        "changelog": "## v1.2.0 \u2014 Jellyfin 12 support\n\nJellyfin 12 moved the server to **.NET 10**, which stops plugins built for Jellyfin 10.x from loading. This release ships builds for **both** generations.\n\n### Added\n- **Jellyfin 12 support.** One release, two builds \u2014 the catalogue offers the right one for your server automatically:\n\n  | Your Jellyfin | Version you'll see | Build |\n  |---|---|---|\n  | 10.11.9+ | `1.2.0.10` | .NET 9 |\n  | 12 | `1.2.0.12` | .NET 10 |\n\n- The **4th version component is the Jellyfin major version** the build targets. This is deliberate: Jellyfin only offers an update when the catalogue version is *higher* than what's installed, so upgrading your server from 10.x to 12 now shows `1.2.0.12` as a normal plugin update and installs it automatically. Without it you'd silently keep the .NET 9 build and the plugin would fail to load.\n\nNo functional changes to watch-state syncing; this is a compatibility release.",
-        "checksum": "1240d9f0f78ea32eca1c0e0a8087c1b8",
-        "sourceUrl": "https://github.com/NMe84/jellyfin-watch-state-sync-plugin/releases/download/v1.2.0/Jellyfin.Plugin.WatchSync-jf10.zip",
-        "targetAbi": "10.11.9.0",
-        "timestamp": "2026-09-10T22:17:08Z",
-        "version": "1.2.0.10"
-      },
-      {
         "changelog": "## v1.1.0.0\n\n### Fixed\n- **Rewatching no longer unwatches the episode for the whole group** \u2014 starting a rewatch and stopping before the end fires a playback event with the episode marked unwatched, which was being propagated to everyone. Playback-driven unwatch is now ignored; the **only** way to unwatch an episode for the group is a manual toggle (the checkmark) by one of the users.\n\n### Changed\n- **Scrobbling now fires for every linked user** \u2014 when two linked users finish an episode together, scrobbler plugins (Trakt, Simkl, \u2026) previously only scrobbled for the user who was actively playing. Synced watch states are now written with the original playback/toggle reason instead of a silent import, so the scrobbler plugins fire for the other user(s) too.",
         "checksum": "191147fb3cdc7d0100b7de4fb5dd8919",
         "sourceUrl": "https://github.com/NMe84/jellyfin-watch-state-sync-plugin/releases/download/v1.1.0.0/Jellyfin.Plugin.WatchSync.zip",
@@ -66,22 +50,6 @@
         "targetAbi": "10.11.9.0",
         "timestamp": "2026-09-27T13:31:26Z",
         "version": "2.2.0.0"
-      },
-      {
-        "changelog": "## v2.1.0 \u2014 Jellyfin 12 support\n\nJellyfin 12 moved the server to **.NET 10**, which stops plugins built for Jellyfin 10.x from loading. This release ships builds for **both** generations.\n\n### Added\n- **Jellyfin 12 support.** One release, two builds \u2014 the catalogue offers the right one for your server automatically:\n\n  | Your Jellyfin | Version you'll see | Build |\n  |---|---|---|\n  | 10.11.9+ | `2.1.0.10` | .NET 9 |\n  | 12 | `2.1.0.12` | .NET 10 |\n\n- The **4th version component is the Jellyfin major version** the build targets. This is deliberate: Jellyfin only offers an update when the catalogue version is *higher* than what's installed, so upgrading your server from 10.x to 12 now shows `2.1.0.12` as a normal plugin update and installs it automatically. Without it you'd silently keep the .NET 9 build and the plugin would fail to load.\n\nNo functional changes to edge lighting; this is a compatibility release.",
-        "checksum": "492fe41df693fdee3173c9050262a9b4",
-        "sourceUrl": "https://github.com/NMe84/jellyfin-wled-tv-plugin/releases/download/v2.1.0/Jellyfin.Plugin.WledTv-jf12.zip",
-        "targetAbi": "12.0.0.0",
-        "timestamp": "2026-09-10T22:16:34Z",
-        "version": "2.1.0.12"
-      },
-      {
-        "changelog": "## v2.1.0 \u2014 Jellyfin 12 support\n\nJellyfin 12 moved the server to **.NET 10**, which stops plugins built for Jellyfin 10.x from loading. This release ships builds for **both** generations.\n\n### Added\n- **Jellyfin 12 support.** One release, two builds \u2014 the catalogue offers the right one for your server automatically:\n\n  | Your Jellyfin | Version you'll see | Build |\n  |---|---|---|\n  | 10.11.9+ | `2.1.0.10` | .NET 9 |\n  | 12 | `2.1.0.12` | .NET 10 |\n\n- The **4th version component is the Jellyfin major version** the build targets. This is deliberate: Jellyfin only offers an update when the catalogue version is *higher* than what's installed, so upgrading your server from 10.x to 12 now shows `2.1.0.12` as a normal plugin update and installs it automatically. Without it you'd silently keep the .NET 9 build and the plugin would fail to load.\n\nNo functional changes to edge lighting; this is a compatibility release.",
-        "checksum": "b418bc6b2bfc7e55d50a9794f0a0356a",
-        "sourceUrl": "https://github.com/NMe84/jellyfin-wled-tv-plugin/releases/download/v2.1.0/Jellyfin.Plugin.WledTv-jf10.zip",
-        "targetAbi": "10.11.9.0",
-        "timestamp": "2026-09-10T22:16:34Z",
-        "version": "2.1.0.10"
       },
       {
         "changelog": "## v2.0.2.0\n\n### Sync delay is now bidirectional\n- The **Sync delay** setting accepts **negative values** (\u22125000\u20265000 ms) and is now a **slider** with a live readout. Positive pushes the LEDs **later**; negative pulls them **earlier**.\n- Under the hood the decoder no longer uses `-re` \u2014 it's paced by the read buffer instead, which primes quickly and keeps a bounded read-ahead. That removes the small residual output lag at delay 0 (so 0 is a true baseline) and gives the server already-decoded future frames to release early when you set a negative delay.\n- **Tuning:** if the lighting runs *ahead* of the video, increase the slider; if it lags *behind*, drag it into the negative range.\n\n### Fixed\n- **LEDs sometimes stayed lit after returning to the menu** \u2014 the \"off\" message could race the last colour frame on the single-send WebSocket. Stopping now waits for the sender to fully stop before sending off (reconnecting first if needed), so the strip reliably goes dark.",
