@@ -31,6 +31,7 @@ jobs:
           PLUGINS = [
             ("NMe84", "jellyfin-watch-state-sync-plugin"),
             ("NMe84", "jellyfin-wled-tv-plugin"),
+            ("NMe84", "jellyfin-watch-next-plugin"),
           ]
 
           token = os.environ.get("GH_TOKEN")
